@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bodoni: "Bodoni Moda", Georgia, serif;
+  --font-work: "Work Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-on-surface;
+    font-family: var(--font-work);
+  }
+
+  ::selection {
+    @apply bg-secondary-container;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .cinematic-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(27, 29, 16, 0.2),
+      rgba(27, 29, 16, 0.6)
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Marquee animation pause on hover */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* Smooth image transitions */
+.img-hover-zoom {
+  overflow: hidden;
+}
+.img-hover-zoom img {
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-hover-zoom:hover img {
+  transform: scale(1.08);
+}
